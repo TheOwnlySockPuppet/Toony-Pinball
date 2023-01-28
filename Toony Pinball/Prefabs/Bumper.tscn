@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnlqek1aopd80"]
+
+[ext_resource type="Script" path="res://Prefabs/Bumper.gd" id="1_21odk"]
+[ext_resource type="Texture2D" uid="uid://b1jjfju8cqkj6" path="res://icon.png" id="1_i7j7q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5gfy4"]
+radius = 22.0227
+
+[node name="Bumper" type="StaticBody2D"]
+script = ExtResource("1_21odk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.671875, 0.671875)
+texture = ExtResource("1_i7j7q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5gfy4")

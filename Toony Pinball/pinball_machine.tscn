@@ -1,0 +1,106 @@
+[gd_scene load_steps=5 format=3 uid="uid://rv8fxsxc0vb1"]
+
+[ext_resource type="PackedScene" uid="uid://bb112a3s8vo6q" path="res://Prefabs/Pinball.tscn" id="1_1dxqw"]
+[ext_resource type="PackedScene" uid="uid://cnlqek1aopd80" path="res://Prefabs/Bumper.tscn" id="2_2ibph"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wxklc"]
+friction = 0.05
+bounce = 0.8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cs087"]
+size = Vector2(272, 5.00001)
+
+[node name="PinballMachine" type="Node2D"]
+
+[node name="Pinball" parent="." instance=ExtResource("1_1dxqw")]
+physics_material_override = SubResource("PhysicsMaterial_wxklc")
+
+[node name="TopBorder" type="StaticBody2D" parent="."]
+position = Vector2(471, -16)
+
+[node name="ColorRect" type="ColorRect" parent="TopBorder"]
+offset_left = -471.0
+offset_top = 16.0
+offset_right = 472.0
+offset_bottom = 21.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBorder"]
+position = Vector2(0.5, 18.5)
+shape = SubResource("RectangleShape2D_cs087")
+
+[node name="Test Ramp" type="StaticBody2D" parent="."]
+position = Vector2(367, 471)
+rotation = -0.433687
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Test Ramp"]
+offset_left = -136.0
+offset_top = -3.0
+offset_right = 136.0
+offset_bottom = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Test Ramp"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_cs087")
+
+[node name="Test Ramp2" type="StaticBody2D" parent="."]
+position = Vector2(114, 471)
+rotation = 0.432842
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Test Ramp2"]
+offset_left = -136.0
+offset_top = -3.0
+offset_right = 136.0
+offset_bottom = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Test Ramp2"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_cs087")
+
+[node name="LeftBorder" type="StaticBody2D" parent="."]
+position = Vector2(21, 471)
+rotation = 1.5708
+
+[node name="ColorRect" type="ColorRect" parent="LeftBorder"]
+offset_left = -471.0
+offset_top = 16.0
+offset_right = 472.0
+offset_bottom = 21.0
+scale = Vector2(0.639999, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBorder"]
+position = Vector2(-169, 18.5)
+shape = SubResource("RectangleShape2D_cs087")
+
+[node name="RightBorder" type="StaticBody2D" parent="."]
+position = Vector2(496, 472)
+rotation = 1.5708
+
+[node name="ColorRect" type="ColorRect" parent="RightBorder"]
+offset_left = -471.0
+offset_top = 16.0
+offset_right = 472.0
+offset_bottom = 21.0
+scale = Vector2(0.639999, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBorder"]
+position = Vector2(-169, 18.5)
+shape = SubResource("RectangleShape2D_cs087")
+
+[node name="BottomRamp" type="StaticBody2D" parent="."]
+position = Vector2(72, 65)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BottomRamp"]
+
+[node name="Polygon2D" type="Polygon2D" parent="BottomRamp"]
+
+[node name="Flipper" type="AnimatableBody2D" parent="."]
+position = Vector2(112, 146)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flipper"]
+
+[node name="Polygon2D" type="Polygon2D" parent="Flipper"]
+
+[node name="Bumper" parent="." instance=ExtResource("2_2ibph")]
+position = Vector2(241, 500)

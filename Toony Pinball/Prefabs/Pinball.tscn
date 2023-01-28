@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb112a3s8vo6q"]
+
+[ext_resource type="Script" path="res://Prefabs/Pinball.gd" id="1_tqrsg"]
+[ext_resource type="Texture2D" uid="uid://dpi5x2tbblu2i" path="res://Art/pinball_digit.png" id="2_jrfyi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_51f03"]
+radius = 12.0
+
+[node name="Pinball" type="RigidBody2D"]
+position = Vector2(399, 96)
+max_contacts_reported = 3
+contact_monitor = true
+script = ExtResource("1_tqrsg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0621859, 0.0621859)
+texture = ExtResource("2_jrfyi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_51f03")
+
+[connection signal="body_entered" from="." to="." method="_on_pinball_body_entered"]
