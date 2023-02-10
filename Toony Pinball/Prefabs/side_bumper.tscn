@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctwye2ycacvw"]
+
+[ext_resource type="Script" path="res://Prefabs/side_bumper.gd" id="1_8kn7r"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8boip"]
+a = Vector2(27, 4)
+b = Vector2(3, 49)
+
+[node name="SideBumper" type="StaticBody2D"]
+script = ExtResource("1_8kn7r")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(29, 0, 29, 54, 0, 54)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(29, 0, 29, 54, 0, 54)
+
+[node name="BumpArea" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BumpArea"]
+shape = SubResource("SegmentShape2D_8boip")
+
+[connection signal="body_entered" from="BumpArea" to="." method="_on_bump_area_body_entered"]
